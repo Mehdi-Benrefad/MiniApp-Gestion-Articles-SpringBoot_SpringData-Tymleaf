@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+		
+
+    </head>
+	<body>
+		
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		 <div class="container-fluid">
+				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				      <span class="navbar-toggler-icon"></span>
+				    </button>
+				    
+				    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				      <a class="navbar-brand" href="#"><i class="text-success">Mehdi</i>.Exam</a>
+				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				         <li class="nav-item">
+				          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="/ajouter">Ajouter Article</a>
+				        </li>
+				      </ul>
+				    </div>
+				    
+				    
+		  </div>
+	  </nav>
+	
+    
+	</nav>
+	<br>
+	
+	 <div style="display:flex;width:50%;margin-left:20%;">
+    <div>
+    <h1 style='margin-left:35%;'>Recherche Par Mot Cle:</h1>
+    
+
+    <form th:action="@{parmotcle}" method="POST">
+     
+        <div class="input-group" style=''>
+			  <div class="input-group-prepend">
+			    <span class="input-group-text">Mot Cle</span>
+			  </div>
+			  <input name="mot" type="text" aria-label="Mot Cle" class="form-control">
+			  <input class="btn btn-success" type="submit" value="Chercher">
+			</div>
+			
+    </form>
+    </div>
+    
+     <div style="margin-left:5%;">
+        <h1 style='margin-left:35%;'>Recherche Par ID:</h1>
+    
+
+    <form th:action="@{parid}" method="POST">
+     
+        <div class="input-group" style=''>
+			  <div class="input-group-prepend">
+			    <span class="input-group-text">ID</span>
+			  </div>
+			  <input name="id" type="text" aria-label="Mot Cle" class="form-control">
+			  <input class="btn btn-success" type="submit" value="Chercher">
+			</div>
+			
+    </form>
+    </div>
+    </div>
+    <br><br><br>
+ 
+    
+
+					
+					
+
+							<h1 style="text-align:center"  >Liste des Articles</h1>
+	
+					<table class="table table-striped" style="width:90%;margin-left:5%;">
+					
+					           <thead class="thead-dark">
+					           		
+					           		<th scope="col">Image</th>
+					           		<th scope="col">ID</th>
+							     	<th scope="col">Nom Article</th>
+								    <th scope="col">Nom Auteur</th>
+								    <th scope="col">Texte</th>
+								   <th scope="col">Date Publication</th>
+								    <th scope="col">Supprimer</th>
+								    
+							 </thead>
+							 
+							  <span th:if="${isactive}">
+							  <div th:each="art:${articles}">
+								
+								<tr>
+									<td><img width=100 height=100 src="article.png"></td>
+									<td th:text="${art.idArticle}"></td>
+									<td th:text="${art.nomArticle}"></td>
+									<td th:text="${art.nomAuteur}"></td>
+									<td th:text="${art.texte}"></td>
+									<td th:text="${art.DatePub}"></td>
+									<td>
+									<form th:action="@{supprimer}" method="POST">
+										<button name="identifiant" type="submit" th:value="${art.idArticle}" class="btn btn-outline-danger my-2 my-sm-0">Supprimer</button>
+									</form>
+									</td>
+								</tr>
+									
+						      </div>
+						      </span>
+							   
+					</table>
+		
+	
+ 						<br><br><br><br>
+
+
+
+<nav class="navbar navbar-dark bg-dark fixed-bottom ">
+  <a class="navbar-brand" href="#">Espace Admin</a>
+</nav>
+
+	</body>
+</html>
