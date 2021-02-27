@@ -17,7 +17,7 @@ public class Article {
 	}
 	public Article(String nomArticle, String nomAuteur, Date datePub, String texte, String photo) {
 		super();
-		this.idArticle = idArticle;
+		
 		NomArticle = nomArticle;
 		NomAuteur = nomAuteur;
 		DatePub = datePub;
