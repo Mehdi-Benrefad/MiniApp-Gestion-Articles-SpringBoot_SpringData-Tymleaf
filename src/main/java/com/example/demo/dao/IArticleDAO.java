@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.entities.Article;
 
 public interface IArticleDAO {
-
+ 
 	public void AjouterArticle(Article Art);
 	public List<Article> ConsulterArticles();
 	//public List<Article> ArticlesParMotCle();
